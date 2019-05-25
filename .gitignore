@@ -1,0 +1,4 @@
+.vagrant
+*.zip
+*.nupkg
+Vagrantfile

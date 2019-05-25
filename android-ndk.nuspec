@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>android-ndk</id>
+    <version>19.3</version>
+    <packageSourceUrl>https://developer.android.com/ndk/downloads</packageSourceUrl>
+    <owners>Asif Shaikh</owners>
+    <title>Android NDK (Install)</title>
+    <authors>Google</authors>
+    <projectUrl>https://developer.android.com/ndk/downloads</projectUrl>
+    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/android-ndk.png</iconUrl>-->
+    <licenseUrl>https://developer.android.com/license</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://developer.android.com/ndk</projectSourceUrl>
+    <docsUrl>https://developer.android.com/ndk/guides</docsUrl>
+    <tags>android-ndk android ndk google</tags>
+    <summary>The Android NDK is a toolset that lets you implement parts of your app in native code, using languages such as C and C++.</summary>
+    <description>The Native Development Kit (NDK) is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:
+
+* Squeeze extra performance out of a device to achieve low latency or run computationally intensive applications, such as games or physics simulations.
+* Reuse your own or other developers' C or C++ libraries. 
+
+
+**Please Note**: This is an automatically updated package. If you find it is 
+out of date by more than a day or two, please contact the maintainer(s) and
+let them know the package is no longer updating correctly.
+</description>
+    <releaseNotes>https://developer.android.com/ndk/downloads/revision_history</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
