@@ -1,9 +1,22 @@
 ﻿
 $ErrorActionPreference = 'Stop';
 
+$packageParameters = Get-PackageParameters
+
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$androidPath = "${Env:SystemDrive}\Android"
-$destination = "${androidPath}"
+$androidPath = "${Env:SystemDrive}\Android\android-ndk"
+
+# set default installation path if not passed
+if (!$packageParameters['InstallationPath']) { $packageParameters['InstallationPath'] = "${androidPath}" }
+
+
+
+$pathElements = $packageParameters['InstallationPath'].split("\")
+
+$installationPath = $pathElements[0..($pathElements.count-2)] -join "\"
+$installationFolder = $pathElements[-1]
+
+
 $url        = 'https://dl.google.com/android/repository/android-ndk-r19c-windows-x86.zip'
 $url64      = 'https://dl.google.com/android/repository/android-ndk-r19c-windows-x86_64.zip'
 
@@ -22,7 +35,7 @@ If(Get-OSArchitectureWidth -Compare 32) {
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = $destination
+  unzipLocation = $installationPath
   url           = $url
   url64bit      = $url64
 
@@ -38,25 +51,6 @@ Install-ChocolateyZipPackage @packageArgs
 
 $packagelibPath = $env:ChocolateyPackageFolder
 
-Rename-Item -Path "$destination\$folderName" -NewName "$destination\$($packageArgs.softwareName.replace('*',''))"
-((Get-Content -path "$packagelibPath\$($zipFileName).txt" -Raw) -replace "$($destination.replace("\","\\"))\\$folderName","$destination\$($packageArgs.softwareName.replace('*',''))") | Set-Content -Path "$packagelibPath\$($zipFileName).txt"
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
+# the folder name in the zip file is named after the version, so renaming it
+Rename-Item -Path "$installationPath\$folderName" -NewName "$installationPath\$installationFolder"
+((Get-Content -path "$packagelibPath\$($zipFileName).txt" -Raw) -replace "$($installationPath.replace("\","\\"))\\$folderName","$installationPath\$installationFolder") | Set-Content -Path "$packagelibPath\$($zipFileName).txt"

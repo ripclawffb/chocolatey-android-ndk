@@ -9,7 +9,7 @@
     <title>Android NDK (Install)</title>
     <authors>Google</authors>
     <projectUrl>https://developer.android.com/ndk/downloads</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/android-ndk.png</iconUrl>-->
+    <iconUrl>https://cdn.jsdelivr.net/gh/ripclawffb/chocolatey-android-ndk@master/android-ndk.png</iconUrl>
     <licenseUrl>https://developer.android.com/license</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://developer.android.com/ndk</projectSourceUrl>
@@ -19,12 +19,21 @@
     <description>The Native Development Kit (NDK) is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:
 
 * Squeeze extra performance out of a device to achieve low latency or run computationally intensive applications, such as games or physics simulations.
-* Reuse your own or other developers' C or C++ libraries. 
+* Reuse your own or other developers' C or C++ libraries.
 
+**Please Note:** Due to the way Google versions their android-ndk package, it is not compatible with the NuGet spec. So to get around it, I've replaced the letter variant to a dot number notation.
+Examples: 
+* `r19` is equivalent to 19.0
+* `r19c` is equivalent to 19.3
 
-**Please Note**: This is an automatically updated package. If you find it is 
-out of date by more than a day or two, please contact the maintainer(s) and
-let them know the package is no longer updating correctly.
+### Package Specific
+#### Package Parameters
+The following package parameters can be set:
+
+ * `/InstallationPath:` - Where to install the package to - defaults to "`$env:SystemDrive\Android\android-ndk`"
+
+To pass parameters, use `--params "''"` (e.g. `choco install packageID [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
+To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
 </description>
     <releaseNotes>https://developer.android.com/ndk/downloads/revision_history</releaseNotes>
   </metadata>
