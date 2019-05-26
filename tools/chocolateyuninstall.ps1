@@ -15,5 +15,6 @@ $packageArgs = @{
 
 $uninstalled = $false
 
+Uninstall-ChocolateyEnvironmentVariable -VariableName 'ANDROID_NDK_ROOT'
 
 Uninstall-ChocolateyZipPackage @packageArgs

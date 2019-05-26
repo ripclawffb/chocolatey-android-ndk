@@ -53,4 +53,12 @@ $packagelibPath = $env:ChocolateyPackageFolder
 
 # the folder name in the zip file is named after the version, so renaming it
 Rename-Item -Path "$installationPath\$folderName" -NewName "$installationPath\$installationFolder"
-((Get-Content -path "$packagelibPath\$($zipFileName).txt" -Raw) -replace "$($installationPath.replace("\","\\"))\\$folderName","$installationPath\$installationFolder") | Set-Content -Path "$packagelibPath\$($zipFileName).txt"
+
+# update the list of extracted files in the chocolatey text file with the new path
+((Get-Content -path "$packagelibPath\$($zipFileName).txt" -Raw) `
+  -replace "$($installationPath.replace("\","\\"))\\$folderName","$installationPath\$installationFolder") `
+  | Set-Content -Path "$packagelibPath\$($zipFileName).txt"
+
+Install-ChocolateyEnvironmentVariable `
+  -VariableName 'ANDROID_NDK_ROOT' `
+  -VariableValue "$installationPath\$installationFolder"

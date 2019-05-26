@@ -4,7 +4,7 @@
   <metadata>
     <id>android-ndk</id>
     <version>19.3</version>
-    <packageSourceUrl>https://developer.android.com/ndk/downloads</packageSourceUrl>
+    <packageSourceUrl>https://github.com/ripclawffb/chocolatey-android-ndk</packageSourceUrl>
     <owners>Asif Shaikh</owners>
     <title>Android NDK (Install)</title>
     <authors>Google</authors>
