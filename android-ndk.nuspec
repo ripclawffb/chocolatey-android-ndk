@@ -8,11 +8,10 @@
     <owners>Asif Shaikh</owners>
     <title>Android NDK (Install)</title>
     <authors>Google</authors>
-    <projectUrl>https://developer.android.com/ndk/downloads</projectUrl>
+    <projectUrl>https://developer.android.com/ndk/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/ripclawffb/chocolatey-android-ndk@master/android-ndk.png</iconUrl>
     <licenseUrl>https://developer.android.com/license</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://developer.android.com/ndk</projectSourceUrl>
     <docsUrl>https://developer.android.com/ndk/guides</docsUrl>
     <tags>android-ndk android ndk google</tags>
     <summary>The Android NDK is a toolset that lets you implement parts of your app in native code, using languages such as C and C++.</summary>
