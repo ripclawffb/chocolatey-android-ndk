@@ -13,6 +13,11 @@ function global:au_SearchReplace {
             "(checksum64\s*=\s*)('.*')"           = "`$1'$($Latest.Checksum64)'"
         }
 
+        ".\tools\chocolateyUninstall.ps1" = @{
+            "(?i)(^[$]url\s*=\s*)('.*')"          = "`$1'$($Latest.URL32)'"
+            "(?i)(^[$]url64\s*=\s*)('.*')"        = "`$1'$($Latest.URL64)'"
+        }
+
         "$($Latest.PackageName).nuspec" = @{
             "(\<releaseNotes\>).*?(\</releaseNotes\>)" = "`${1}$($Latest.ReleaseNotes)`$2"
         }
