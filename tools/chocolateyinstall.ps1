@@ -9,8 +9,6 @@ $androidPath = "${Env:SystemDrive}\Android\android-ndk"
 # set default installation path if not passed
 if (!$packageParameters['InstallationPath']) { $packageParameters['InstallationPath'] = "${androidPath}" }
 
-
-
 $pathElements = $packageParameters['InstallationPath'].split("\")
 
 $installationPath = $pathElements[0..($pathElements.count-2)] -join "\"
@@ -32,18 +30,20 @@ If(Get-OSArchitectureWidth -Compare 32) {
   $folderName = $url64.split('/')[-1].replace('-windows-x86_64.zip','')
 }
 
+$packageName = 'android-ndk'
+$softwareName = 'android-ndk*'
 
 $packageArgs = @{
-  packageName   = $env:ChocolateyPackageName
+  packageName   = $packageName
   unzipLocation = $installationPath
   url           = $url
   url64bit      = $url64
 
-  softwareName  = 'android-ndk*'
+  softwareName  = $softwareName
 
-  checksum      = '800C3C6BA616DDF25097D43566D5D574F9E6C0A10538BF60DD5BE0E024F732CD'
+  checksum      = '800c3c6ba616ddf25097d43566d5d574f9e6c0a10538bf60dd5be0e024f732cd'
   checksumType  = 'sha256'
-  checksum64    = '0FAF708C9837A921CAE5262745F5857162614BB9689A0D188780D12EA93A2C18'
+  checksum64    = '0faf708c9837a921cae5262745f5857162614bb9689a0d188780d12ea93a2c18'
   checksumType64= 'sha256'
 }
 

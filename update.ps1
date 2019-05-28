@@ -22,16 +22,28 @@ function global:au_SearchReplace {
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
 
-    $match = $download_page.Content | Select-String -Pattern '(android-ndk-.*-windows.*\.zip)'
-    $url = $match.Matches[0].value
+    $match = $download_page.Content | Select-String -Pattern '(android-ndk-.*-windows-.*\.zip)'
+    $url = "https://dl.google.com/android/repository/$($match.Matches[0].value)"
     
-    $version  = $url -split '[_-]|.zip' | Select-Object -Last 1 -Skip 3
+    $rawVersion  = $url -split '[_-]|.zip' | Select-Object -Last 1 -Skip 3
+
+    If($rawVersion -as [int]){
+        $version = "$rawVersion.0"
+    } Else {
+        # If version include alphabetical minor version, convert it to integer
+        $result = $rawVersion -match '(\d+)(\D+)'
+        $majorVersion = $matches[1]
+        $minorVersion = $matches[2]
+    
+        $minorVersionInt = [int][char]$minorVersion % 32;
+        $version = "$majorVersion.$minorVersionInt"
+    }
 
     @{
         Version      = $version
-        URL32        = $url -replace 'amd64','i386'
-        URL64        = $url
-        ReleaseNotes = 'https://github.com/influxdata/telegraf/blob/master/CHANGELOG.md'
+        URL32        = $url
+        URL64        = $url -replace 'x86','x86_64'
+        ReleaseNotes = 'https://developer.android.com/ndk/downloads/revision_history'
     }
 }
 
