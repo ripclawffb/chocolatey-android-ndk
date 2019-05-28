@@ -26,6 +26,7 @@ function global:au_GetLatest {
     $url = "https://dl.google.com/android/repository/$($match.Matches[0].value)"
     
     $rawVersion  = $url -split '[_-]|.zip' | Select-Object -Last 1 -Skip 3
+    $rawVersion = $rawVersion.Replace('r','')
 
     If($rawVersion -as [int]){
         $version = "$rawVersion.0"

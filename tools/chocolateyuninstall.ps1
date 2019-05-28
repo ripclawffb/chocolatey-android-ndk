@@ -1,15 +1,15 @@
-﻿$zipFile = 'android-ndk-r19c-windows-x86.zip'
-$zipFile64 = 'android-ndk-r19c-windows-x86_64.zip'
+﻿$url        = 'https://dl.google.com/android/repository/android-ndk-r19c-windows-x86.zip'
+$url64      = 'https://dl.google.com/android/repository/android-ndk-r19c-windows-x86_64.zip'
 
 If(Get-OSArchitectureWidth -Compare 32) {
-  $zipFileName = $zipFile
+  $zipFileName = $url.split('/')[-1]
 } Else {
-  $zipFileName = $zipFile64
+  $zipFileName = $url64.split('/')[-1]
 }
 
 $ErrorActionPreference = 'Stop';
 $packageArgs = @{
-  packageName   = $env:ChocolateyPackageName
+  packageName = $env:ChocolateyPackageName
   zipFileName = $zipFileName
 }
 
