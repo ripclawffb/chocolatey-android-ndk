@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>android-ndk</id>
-    <version>16.2</version>
+    <version>21.0</version>
     <packageSourceUrl>https://github.com/ripclawffb/chocolatey-android-ndk</packageSourceUrl>
     <owners>Asif Shaikh</owners>
     <title>Android NDK (Install)</title>
@@ -29,7 +29,7 @@ Examples:
 #### Package Parameters
 The following package parameters can be set:
 
- * `/InstallationPath:` - Where to install the package to - defaults to "`$env:SystemDrive\Android\`"
+* `/InstallationPath:` - Where to install the package to - defaults to "`$env:SystemDrive\Android\`"
 
 To pass parameters, use `--params "''"` (e.g. `choco install packageID [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
 To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
