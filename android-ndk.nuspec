@@ -20,11 +20,6 @@
 * Squeeze extra performance out of a device to achieve low latency or run computationally intensive applications, such as games or physics simulations.
 * Reuse your own or other developers' C or C++ libraries.
 
-**Please Note:** Due to the way Google versions their android-ndk package, it is not compatible with the NuGet spec. So to get around it, I've replaced the letter variant to a dot number notation.
-Examples:
-* `r19` is equivalent to 19.0
-* `r19c` is equivalent to 19.3
-
 ### Package Specific
 #### Package Parameters
 The following package parameters can be set:
